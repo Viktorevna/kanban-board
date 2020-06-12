@@ -1,0 +1,28 @@
+$colorColumn: rgb(236, 240, 241);
+$colorButtonPrimary: rgb(41, 207, 144);
+
+$columnShadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+:host {
+  width: 300px;
+  max-width: 300px;
+  min-width: 300px;
+  background-color: $colorColumn;
+  box-shadow: $columnShadow;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  height: 100%;
+}
+
+.kb-column__add-card-button {
+  width: 60%;
+  height: 35px;
+  font-size: 15px;
+  background-color: $colorButtonPrimary;
+  color: white;
+  border-radius: 3px;
+}
+

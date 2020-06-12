@@ -14,7 +14,7 @@ describe('AppComponent', function() {
     this.component = this.fixture.componentInstance;
   });
 
-  it('должен ', () => {
+  it('должен инициализировать приложение', () => {
     expect(this.component).toBeTruthy();
   });
 });
