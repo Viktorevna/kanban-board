@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KbColumnComponent } from './kb-column.component';
+import { ColumnTitleComponent } from './column-title.component';
 
-describe('KbColumnComponent', () => {
-  let component: KbColumnComponent;
-  let fixture: ComponentFixture<KbColumnComponent>;
+describe('ColumnTitleComponent', () => {
+  let component: ColumnTitleComponent;
+  let fixture: ComponentFixture<ColumnTitleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KbColumnComponent ]
+      declarations: [ ColumnTitleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KbColumnComponent);
+    fixture = TestBed.createComponent(ColumnTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

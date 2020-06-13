@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.kb-column__actions {
+.column__actions {
   width: 100%;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
   margin-top: 8px;
 }
 
-.kb-column__title-input {
+.column__title-input {
   max-width: 100%;
   min-width: 100%;
   min-height: 35px;
@@ -24,7 +24,7 @@
   font-size: 13px;
 }
 
-.kb-column__save-column-button {
+.column__save-column-button {
   height: 30px;
   padding: 0 12px;
   font-size: 13px;
@@ -33,7 +33,7 @@
   border-radius: 3px;
 }
 
-.kb-column__remove-column-button {
+.column__remove-column-button {
   background-color: transparent;
   color: $colorSecondary;
   display: flex;

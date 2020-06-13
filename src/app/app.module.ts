@@ -2,16 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { KbColumnComponent } from './kb-column/kb-column.component';
+import { ColumnComponent } from './column/column.component';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
-import { KbAddNewColumnComponent } from './kb-add-new-column/kb-add-new-column.component';
+import { ColumnTitleComponent } from './column-title/column-title.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    KbColumnComponent,
-    KbAddNewColumnComponent,
+    ColumnComponent,
+    ColumnTitleComponent
   ],
   imports: [
     BrowserModule,
