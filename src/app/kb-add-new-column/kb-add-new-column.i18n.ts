@@ -1,4 +1,4 @@
 export default {
-  AddCard: 'Добавить карточку',
+  AddCard: 'Добавить колонку',
   InputColumnTitle: 'Введите название колонки'
 };

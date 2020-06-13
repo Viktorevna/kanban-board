@@ -1,0 +1,41 @@
+@import "../../styles/variables";
+
+:host {
+  width: 100%;
+}
+
+.kb-column__actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.kb-column__title-input {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 35px;
+  border: none;
+  box-shadow: $boxShadow;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.kb-column__save-column-button {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 13px;
+  background-color: $colorButtonPrimary;
+  color: $colorPrimaryLight;
+  border-radius: 3px;
+}
+
+.kb-column__remove-column-button {
+  background-color: transparent;
+  color: $colorSecondary;
+  display: flex;
+  align-items: center;
+}

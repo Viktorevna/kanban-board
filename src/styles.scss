@@ -1,3 +1,5 @@
+@import "styles/variables";
+
 html, body, div, span, h1, h2, h3, h4, h5, h6,
 p, a, img, ul, li, form, label, footer, header {
   margin: 0;
@@ -6,9 +8,11 @@ p, a, img, ul, li, form, label, footer, header {
   font-size: 100%;
   vertical-align: baseline;
 }
+
 footer, header, section {
   display: block;
 }
+
 body {
   line-height: 1;
   background-color: rgb(255, 255, 255);
@@ -17,20 +21,36 @@ body {
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
+
 ul {
   list-style: none;
 }
+
 button {
   border: none;
   cursor: pointer;
+  padding: 0;
 }
+
 button:focus {
   outline: none;
 }
+
 p {
   font-size: 15px;
 }
+
 h3 {
   font-weight: 900;
   margin: 5px 0;
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $colorSecondary;
+  }
 }

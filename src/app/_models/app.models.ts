@@ -1,3 +1,4 @@
 export enum ICON_NAMES {
-  ADD = 'add'
+  ADD = 'add',
+  CLEAR = 'clear'
 }
