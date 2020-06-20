@@ -20,6 +20,7 @@ body {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  font-family: Montserrat, serif;
 }
 
 ul {
@@ -36,21 +37,15 @@ button:focus {
   outline: none;
 }
 
-p {
-  font-size: 15px;
-}
-
-h3 {
-  font-weight: 900;
-  margin: 5px 0;
-}
-
 input {
+  border: none;
+  font-family: Montserrat, serif;
+
   &:focus {
     outline: none;
   }
 
   &::placeholder {
-    color: $colorSecondary;
+    color: $colorTextSecondary;
   }
 }

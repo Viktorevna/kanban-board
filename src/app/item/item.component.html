@@ -1,0 +1,28 @@
+<ng-container *ngIf="isEditable || isItemNew">
+  <input
+    class="item__input"
+    placeholder="{{locale.InputItemTitle}}"
+    autofocus
+  >
+  <div class="item__actions">
+    <button
+      class="item__save-button"
+    >
+      {{buttonName}}
+    </button>
+    <button
+      class="item__cancel-button"
+      (click)="inputItemCancel()"
+    >
+      <mat-icon>{{iconNames.CLEAR}}</mat-icon>
+    </button>
+  </div>
+</ng-container>
+
+<div
+  *ngIf="!(isEditable || isItemNew)"
+  class="item"
+  (click)="onItemClick()"
+>
+  {{item.title}}
+</div>

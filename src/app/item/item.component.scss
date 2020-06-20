@@ -1,22 +1,42 @@
 @import "~src/styles/variables";
+@import "~src/styles/mixins";
 
 :host {
   width: 100%;
+  @include textPrimary();
 }
 
-.column-title__input {
-  max-width: 100%;
-  min-width: 100%;
-  min-height: 35px;
-  border: none;
+:host(:first-of-type) {
+  margin-top: 12px;
+}
+
+:host:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.item {
+  background-color: $colorBackgroundSecondary;
+  padding: 8px 12px;
+  box-sizing: border-box;
   box-shadow: $boxShadow;
   border-radius: $borderRadius;
-  box-sizing: border-box;
-  padding: 8px 12px;
-  font-size: 13px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.column-title__actions {
+.item__input {
+  background-color: $colorBackgroundSecondary;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  box-sizing: border-box;
+  box-shadow: $boxShadow;
+  border-radius: $borderRadius;
+}
+
+.item__actions {
   width: 100%;
   display: flex;
   align-items: center;
@@ -24,7 +44,7 @@
   margin-top: 8px;
 }
 
-.column-title__save-button {
+.item__save-button {
   height: 30px;
   padding: 0 12px;
   font-size: 13px;
@@ -33,13 +53,9 @@
   border-radius: $borderRadius;
 }
 
-.column-title__cancel-button {
+.item__cancel-button {
   background-color: transparent;
   color: $colorTextSecondary;
   display: flex;
   align-items: center;
-}
-
-.column-title:hover {
-  cursor: pointer;
 }

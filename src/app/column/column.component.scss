@@ -1,15 +1,30 @@
-@import "../../styles/variables";
+@import "~src/styles/variables";
+@import "~src/styles/mixins";
 
 :host {
   width: 300px;
   max-width: 300px;
   min-width: 300px;
-  background-color: $colorColumn;
+  background-color: $colorBackgroundPrimary;
   box-shadow: $boxShadow;
   margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 12px;
+  box-sizing: border-box;
+}
+
+.column__add-item-button {
+  background-color: $colorBackgroundPrimary;
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  @include textSecondary();
+}
+
+.column__add-item-icon {
+  margin-right: 8px;
 }
 

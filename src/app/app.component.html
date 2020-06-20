@@ -1,1 +1,21 @@
-<column></column>
+<column
+  *ngFor="let column of columns"
+  [column]="column"
+>
+</column>
+
+<column
+  *ngIf="isColumnNew"
+  [isColumnNew]="true"
+  (addingColumnCancel)="addingColumnCancel()"
+>
+</column>
+
+<button
+  *ngIf="!isColumnNew"
+  class="app__add-column-button"
+  (click)="addNewColumn()"
+>
+  <mat-icon class="app__add-column-icon">{{iconNames.ADD}}</mat-icon>
+  {{locale.AddColumn}}
+</button>

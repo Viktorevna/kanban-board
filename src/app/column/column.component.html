@@ -1,1 +1,32 @@
-<column-title></column-title>
+<column-title
+  [columnTitle]="column?.title"
+  [isColumnNew]="isColumnNew"
+  (addingTitleCancel)="addingColumnCancel.emit()"
+>
+</column-title>
+
+<ng-container *ngIf="column?.items?.length">
+  <item
+    *ngFor="let item of column.items"
+    [item]="item"
+    [isItemNew]="false"
+  >
+  </item>
+</ng-container>
+
+<item
+  *ngIf="isItemNew"
+  [isItemNew]="true"
+  (addingItemCancel)="addingItemCancel()"
+>
+</item>
+
+<button
+  *ngIf="!isItemNew && !isColumnNew"
+  class="column__add-item-button"
+  (click)="addNewItem()"
+>
+  <mat-icon class="column__add-item-icon">{{iconNames.ADD}}</mat-icon>
+  {{locale.AddItem}}
+</button>
+

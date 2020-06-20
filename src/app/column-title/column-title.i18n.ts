@@ -1,4 +1,5 @@
 export default {
-  AddCard: 'Добавить колонку',
-  InputColumnTitle: 'Введите название колонки'
+  AddColumn: 'Добавить колонку',
+  ChangeTitle: 'Изменить название',
+  InputColumnTitle: 'Введите заголовок колонки'
 };

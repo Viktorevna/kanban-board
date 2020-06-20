@@ -1,12 +1,30 @@
-<input
-  class="column__title-input"
-  type="text"
-  placeholder="{{locale.InputColumnTitle}}"
-  autofocus
+<ng-container *ngIf="isEditable || isColumnNew">
+  <input
+    class="column-title__input"
+    type="text"
+    placeholder="{{locale.InputColumnTitle}}"
+    autofocus
+  >
+  <div class="column-title__actions">
+    <button
+      class="column-title__save-button"
+    >
+      {{buttonName}}
+    </button>
+    <button
+      class="column-title__cancel-button"
+      (click)="inputTitleCancel()"
+    >
+      <mat-icon>{{iconNames.CLEAR}}</mat-icon>
+    </button>
+  </div>
+</ng-container>
+
+<h3
+  *ngIf="!(isEditable || isColumnNew)"
+  class="column-title"
+  (click)="onTitleClick()"
 >
-<div class="column__actions">
-  <button class="column__save-column-button">{{locale.AddCard}}</button>
-  <button class="column__remove-column-button">
-    <mat-icon>{{iconNames.CLEAR}}</mat-icon>
-  </button>
-</div>
+  {{columnTitle}}
+</h3>
+

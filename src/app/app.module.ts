@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { ColumnComponent } from './column/column.component';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { ColumnTitleComponent } from './column-title/column-title.component';
+import { ItemComponent } from './item/item.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ColumnComponent,
-    ColumnTitleComponent
+    ColumnTitleComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
