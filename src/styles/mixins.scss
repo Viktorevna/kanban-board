@@ -1,11 +1,26 @@
 @import "~src/styles/variables";
 
-@mixin textPrimary {
+@mixin textPrimaryDark {
   font-size: 13px;
   color: $colorTextPrimaryDark;
 }
 
+@mixin textPrimaryLight {
+  font-size: 13px;
+  color: $colorTextPrimaryLight;
+}
+
 @mixin textSecondary {
   font-size: 13px;
+  color: $colorTextSecondary;
+}
+
+@mixin textDescriptionPrimaryDark {
+  font-size: 11px;
+  color: $colorTextPrimaryDark;
+}
+
+@mixin textDescriptionSecondary {
+  font-size: 11px;
   color: $colorTextSecondary;
 }

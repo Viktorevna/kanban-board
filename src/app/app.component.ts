@@ -1,6 +1,6 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import locale from './app.i18n';
-import {Column, ICON_NAMES} from './_models/columns.models';
+import { Column, ICON_NAMES } from 'src/app/_models/columns.models';
 import { ColumnsService } from 'src/app/_services/columns.service';
 
 @Component({

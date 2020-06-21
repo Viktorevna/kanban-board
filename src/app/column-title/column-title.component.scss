@@ -1,4 +1,5 @@
 @import "~src/styles/variables";
+@import "~src/styles/mixins";
 
 :host {
   width: 100%;
@@ -13,7 +14,11 @@
   border-radius: $borderRadius;
   box-sizing: border-box;
   padding: 8px 12px;
-  font-size: 13px;
+  @include textPrimaryDark();
+
+  &::placeholder {
+    @include textSecondary();
+  }
 }
 
 .column-title__actions {
@@ -31,10 +36,9 @@
 .column-title__save-button {
   height: 30px;
   padding: 0 12px;
-  font-size: 13px;
   background-color: $colorButtonPrimary;
-  color: $colorTextPrimaryLight;
   border-radius: $borderRadius;
+  @include textPrimaryLight();
 }
 
 .column-title__icon-button {

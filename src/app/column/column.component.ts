@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { Column, ICON_NAMES, Item } from 'src/app/_models/columns.models';
 import locale from './column.i18n';
-import { ColumnsService } from '../_services/columns.service';
+import { ColumnsService } from 'src/app/_services/columns.service';
 
 @Component({
   selector: 'column',

@@ -3,7 +3,7 @@
 
 :host {
   width: 100%;
-  @include textPrimary();
+  @include textPrimaryDark();
 }
 
 :host(:first-of-type) {
@@ -28,22 +28,30 @@
 
 .item__description {
   padding-top: 4px;
-  font-size: 11px;
+  @include textDescriptionPrimaryDark();
 }
 
 .item__input {
   background-color: $colorBackgroundSecondary;
   width: 100%;
   padding: 8px 12px;
-  font-size: 13px;
   box-sizing: border-box;
   box-shadow: $boxShadow;
   border-radius: $borderRadius;
+  @include textPrimaryDark();
+
+  &::placeholder {
+    @include textSecondary();
+  }
 }
 
 .item__description-input {
   margin-top: 2px;
-  font-size: 11px;
+  @include textDescriptionPrimaryDark();
+
+  &::placeholder {
+    @include textDescriptionSecondary();
+  }
 }
 
 .item__actions {
@@ -57,10 +65,9 @@
 .item__save-button {
   height: 30px;
   padding: 0 12px;
-  font-size: 13px;
   background-color: $colorButtonPrimary;
-  color: $colorTextPrimaryLight;
   border-radius: $borderRadius;
+  @include textPrimaryLight();
 }
 
 .item__icon-buttons {
