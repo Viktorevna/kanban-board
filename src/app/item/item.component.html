@@ -1,15 +1,23 @@
-<ng-container *ngIf="isEditable || isItemNew">
+<form
+  *ngIf="isEditable || isItemNew"
+  [formGroup]="formGroup"
+>
   <input
     class="item__input"
+    type="text"
     placeholder="{{locale.InputItemTitle}}"
     autofocus
+    formControlName="title"
   >
+
   <div class="item__actions">
     <button
       class="item__save-button"
+      (click)="editItem()"
     >
       {{buttonName}}
     </button>
+
     <button
       class="item__cancel-button"
       (click)="inputItemCancel()"
@@ -17,7 +25,7 @@
       <mat-icon>{{iconNames.CLEAR}}</mat-icon>
     </button>
   </div>
-</ng-container>
+</form>
 
 <div
   *ngIf="!(isEditable || isItemNew)"

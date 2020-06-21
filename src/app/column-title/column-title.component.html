@@ -1,16 +1,23 @@
-<ng-container *ngIf="isEditable || isColumnNew">
+<form
+  *ngIf="isEditable || isColumnNew"
+  [formGroup]="formGroup"
+>
   <input
     class="column-title__input"
     type="text"
     placeholder="{{locale.InputColumnTitle}}"
     autofocus
+    formControlName="title"
   >
+
   <div class="column-title__actions">
     <button
       class="column-title__save-button"
+      (click)="editTitle()"
     >
       {{buttonName}}
     </button>
+
     <button
       class="column-title__cancel-button"
       (click)="inputTitleCancel()"
@@ -18,13 +25,13 @@
       <mat-icon>{{iconNames.CLEAR}}</mat-icon>
     </button>
   </div>
-</ng-container>
+</form>
 
 <h3
   *ngIf="!(isEditable || isColumnNew)"
   class="column-title"
   (click)="onTitleClick()"
 >
-  {{columnTitle}}
+  {{column.title}}
 </h3>
 

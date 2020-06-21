@@ -6,6 +6,7 @@ import { ColumnComponent } from './column/column.component';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { ColumnTitleComponent } from './column-title/column-title.component';
 import { ItemComponent } from './item/item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { ItemComponent } from './item/item.component';
   ],
   imports: [
     BrowserModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [

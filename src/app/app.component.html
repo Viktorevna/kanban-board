@@ -1,21 +1,22 @@
 <column
   *ngFor="let column of columns"
   [column]="column"
->
-</column>
-
-<column
-  *ngIf="isColumnNew"
-  [isColumnNew]="true"
+  [isColumnNew]="column.isColumnNew"
   (addingColumnCancel)="addingColumnCancel()"
+  (editColumn)="editColumn($event)"
 >
 </column>
 
 <button
-  *ngIf="!isColumnNew"
   class="app__add-column-button"
   (click)="addNewColumn()"
 >
   <mat-icon class="app__add-column-icon">{{iconNames.ADD}}</mat-icon>
   {{locale.AddColumn}}
+</button>
+
+<button
+  (click)="removeAll()"
+>
+  <mat-icon class="app__add-column-icon">{{iconNames.CLEAR}}</mat-icon>
 </button>

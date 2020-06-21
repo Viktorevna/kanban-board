@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import locale from './app.i18n';
-import { IColumn, ICON_NAMES } from './_models/app.models';
+import {Column, ICON_NAMES} from './_models/columns.models';
 import { ColumnsService } from 'src/app/_services/columns.service';
 
 @Component({
@@ -11,50 +11,35 @@ import { ColumnsService } from 'src/app/_services/columns.service';
 export class AppComponent implements OnInit {
   locale = locale;
   iconNames = ICON_NAMES;
-  isColumnNew = false;
-  columns: Array<IColumn> = [];
-  // columns: Array<IColumn> = [
-  //   {
-  //     title: 'to-do',
-  //     items: [
-  //       {
-  //         title: 'to do sth'
-  //       },
-  //       {
-  //         title: 'to do sth'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     title: 'doing',
-  //     items: [
-  //       {
-  //         title: 'to do sth'
-  //       },
-  //       {
-  //         title: 'to do sth'
-  //       },
-  //       {
-  //         title: 'to do sth'
-  //       }
-  //     ]
-  //   }
-  // ];
+  columns: Array<Column> = [];
 
   constructor(
-    private columnsService = ColumnsService
+    @Inject(ColumnsService) private columnsService
   ) {
   }
 
   ngOnInit() {
-    // this.columns = this.columnsService.getColumns();
+    this.columns = this.columnsService.getColumns();
   }
 
   addNewColumn() {
-    this.isColumnNew = true;
+    const column = new Column();
+    column.isColumnNew = true;
+    this.columnsService.addColumn(column);
   }
 
   addingColumnCancel() {
-    this.isColumnNew = false;
+    this.columnsService.removeColumn();
+  }
+
+  editColumn(column: Column): void {
+
+    this.columnsService.editColumn(column);
+    this.columns = this.columnsService.getColumns();
+  }
+
+  removeAll() {
+    this.columnsService.removeAll();
+    this.columns = this.columnsService.getColumns();
   }
 }

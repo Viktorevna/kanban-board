@@ -1,28 +1,21 @@
 <column-title
-  [columnTitle]="column?.title"
+  [column]="column"
   [isColumnNew]="isColumnNew"
   (addingTitleCancel)="addingColumnCancel.emit()"
+  (editColumnTitle)="editColumn.emit($event)"
 >
 </column-title>
 
-<ng-container *ngIf="column?.items?.length">
-  <item
-    *ngFor="let item of column.items"
-    [item]="item"
-    [isItemNew]="false"
-  >
-  </item>
-</ng-container>
-
 <item
-  *ngIf="isItemNew"
-  [isItemNew]="true"
+  *ngFor="let item of column.items"
+  [item]="item"
+  [isItemNew]="item.isItemNew"
   (addingItemCancel)="addingItemCancel()"
+  (editColumnItem)="editColumnItem($event)"
 >
 </item>
 
 <button
-  *ngIf="!isItemNew && !isColumnNew"
   class="column__add-item-button"
   (click)="addNewItem()"
 >
