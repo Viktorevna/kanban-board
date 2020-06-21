@@ -1,12 +1,11 @@
 <form
-  *ngIf="isEditable || isColumnNew"
+  *ngIf="isEditFormVisible"
   [formGroup]="formGroup"
 >
   <input
     class="column-title__input"
     type="text"
     placeholder="{{locale.InputColumnTitle}}"
-    autofocus
     formControlName="title"
   >
 
@@ -18,17 +17,27 @@
       {{buttonName}}
     </button>
 
-    <button
-      class="column-title__cancel-button"
-      (click)="inputTitleCancel()"
-    >
-      <mat-icon>{{iconNames.CLEAR}}</mat-icon>
-    </button>
+    <div class="column-title__icon-buttons">
+      <button
+        *ngIf="!column.isColumnNew"
+        class="column-title__icon-button"
+        (click)="removeColumn.emit(column)"
+      >
+        <mat-icon>{{iconNames.DELETE}}</mat-icon>
+      </button>
+
+      <button
+        class="column-title__icon-button"
+        (click)="inputTitleCancel()"
+      >
+        <mat-icon>{{iconNames.CLEAR}}</mat-icon>
+      </button>
+    </div>
   </div>
 </form>
 
 <h3
-  *ngIf="!(isEditable || isColumnNew)"
+  *ngIf="!isEditFormVisible"
   class="column-title"
   (click)="onTitleClick()"
 >

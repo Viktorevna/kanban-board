@@ -2,8 +2,8 @@
   *ngFor="let column of columns"
   [column]="column"
   [isColumnNew]="column.isColumnNew"
-  (addingColumnCancel)="addingColumnCancel()"
   (editColumn)="editColumn($event)"
+  (removeColumn)="removeColumn($event)"
 >
 </column>
 

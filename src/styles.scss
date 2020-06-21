@@ -40,6 +40,23 @@ button:focus {
 input {
   border: none;
   font-family: Montserrat, serif;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $colorTextSecondary;
+  }
+}
+
+textarea {
+  border: none;
+  font-family: Montserrat, serif;
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 150px;
 
   &:focus {
     outline: none;

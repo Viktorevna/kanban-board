@@ -26,6 +26,11 @@
   }
 }
 
+.item__description {
+  padding-top: 4px;
+  font-size: 11px;
+}
+
 .item__input {
   background-color: $colorBackgroundSecondary;
   width: 100%;
@@ -34,6 +39,11 @@
   box-sizing: border-box;
   box-shadow: $boxShadow;
   border-radius: $borderRadius;
+}
+
+.item__description-input {
+  margin-top: 2px;
+  font-size: 11px;
 }
 
 .item__actions {
@@ -53,7 +63,11 @@
   border-radius: $borderRadius;
 }
 
-.item__cancel-button {
+.item__icon-buttons {
+  display: flex;
+}
+
+.item__icon-button {
   background-color: transparent;
   color: $colorTextSecondary;
   display: flex;

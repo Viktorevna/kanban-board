@@ -1,5 +1,5 @@
 <form
-  *ngIf="isEditable || isItemNew"
+  *ngIf="isEditFormVisible"
   [formGroup]="formGroup"
 >
   <input
@@ -10,6 +10,14 @@
     formControlName="title"
   >
 
+  <textarea
+    class="item__input item__description-input"
+    placeholder="{{locale.InputItemDescription}}"
+    autofocus
+    formControlName="description"
+  >
+  </textarea>
+
   <div class="item__actions">
     <button
       class="item__save-button"
@@ -18,19 +26,35 @@
       {{buttonName}}
     </button>
 
-    <button
-      class="item__cancel-button"
-      (click)="inputItemCancel()"
-    >
-      <mat-icon>{{iconNames.CLEAR}}</mat-icon>
-    </button>
+    <div class="item__icon-buttons">
+      <button
+        *ngIf="!item.isItemNew"
+        class="item__icon-button"
+        (click)="removeItem.emit(item)"
+      >
+        <mat-icon>{{iconNames.DELETE}}</mat-icon>
+      </button>
+
+      <button
+        class="item__icon-button"
+        (click)="inputItemCancel()"
+      >
+        <mat-icon>{{iconNames.CLEAR}}</mat-icon>
+      </button>
+    </div>
   </div>
 </form>
 
 <div
-  *ngIf="!(isEditable || isItemNew)"
+  *ngIf="!isEditFormVisible"
   class="item"
   (click)="onItemClick()"
 >
   {{item.title}}
+  <div
+    *ngIf="item.description"
+    class="item__description"
+  >
+    {{item.description}}
+  </div>
 </div>

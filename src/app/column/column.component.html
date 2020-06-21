@@ -1,17 +1,15 @@
 <column-title
   [column]="column"
-  [isColumnNew]="isColumnNew"
-  (addingTitleCancel)="addingColumnCancel.emit()"
   (editColumnTitle)="editColumn.emit($event)"
+  (removeColumn)="removeColumn.emit($event)"
 >
 </column-title>
 
 <item
   *ngFor="let item of column.items"
   [item]="item"
-  [isItemNew]="item.isItemNew"
-  (addingItemCancel)="addingItemCancel()"
   (editColumnItem)="editColumnItem($event)"
+  (removeItem)="removeItem($event)"
 >
 </item>
 

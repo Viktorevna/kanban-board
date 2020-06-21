@@ -18,24 +18,34 @@ export class AppComponent implements OnInit {
   ) {
   }
 
+  /**
+   * Инициализация компонента
+   */
   ngOnInit() {
     this.columns = this.columnsService.getColumns();
   }
 
+  /**
+   * Добавление колонки
+   */
   addNewColumn() {
     const column = new Column();
-    column.isColumnNew = true;
     this.columnsService.addColumn(column);
   }
 
-  addingColumnCancel() {
-    this.columnsService.removeColumn();
-  }
-
+  /**
+   * Редактирование колонки
+   */
   editColumn(column: Column): void {
-
     this.columnsService.editColumn(column);
     this.columns = this.columnsService.getColumns();
+  }
+
+  /**
+   * Удаление колонки
+   */
+  removeColumn(column: Column): void {
+    this.columnsService.removeColumn(column);
   }
 
   removeAll() {

@@ -11,43 +11,65 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ItemComponent implements OnInit {
   @Input()
   item: Item;
-  @Input()
-  isItemNew: boolean;
 
   @Output()
-  addingItemCancel = new EventEmitter();
-  @Output()
   editColumnItem = new EventEmitter<Item>();
+  @Output()
+  removeItem = new EventEmitter<Item>();
 
   locale = locale;
   isEditable = false;
   iconNames = ICON_NAMES;
   formGroup: FormGroup;
 
+  /**
+   * Инициализация компонента
+   */
   ngOnInit() {
     this.formGroup = new FormGroup({
-      title: new FormControl(this.item.title)
+      title: new FormControl(this.item.title),
+      description: new FormControl(this.item.description)
     });
   }
 
+  /**
+   * Наименования кнопки в зависимости от режима редактирования
+   */
   get buttonName(): string {
     return this.isEditable ? locale.ChangeItem : locale.AddItem;
   }
 
+  /**
+   * Отображается ли форма редактирования
+   */
+  get isEditFormVisible(): boolean {
+    return this.isEditable || this.item.isItemNew;
+  }
+
+  /**
+   * Обработчик клика на карточку
+   */
   onItemClick(): void {
     this.isEditable = true;
   }
 
+  /**
+   * Отмена редактирования карточки
+   */
   inputItemCancel(): void {
     if (this.item.isItemNew) {
-      this.addingItemCancel.emit();
+      this.removeItem.emit(this.item);
     } else {
       this.isEditable = false;
     }
   }
 
+  /**
+   * Редактирование карточки
+   */
   editItem(): void {
     this.item.title = this.formGroup.get('title').value ?? locale.WithoutTitle;
+    this.item.description = this.formGroup.get('description').value;
     this.item.isItemNew = false;
     this.editColumnItem.emit(this.item);
   }

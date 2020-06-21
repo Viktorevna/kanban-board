@@ -24,6 +24,10 @@
   margin-top: 8px;
 }
 
+.column-title__icon-buttons {
+  display: flex;
+}
+
 .column-title__save-button {
   height: 30px;
   padding: 0 12px;
@@ -33,7 +37,7 @@
   border-radius: $borderRadius;
 }
 
-.column-title__cancel-button {
+.column-title__icon-button {
   background-color: transparent;
   color: $colorTextSecondary;
   display: flex;

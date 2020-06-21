@@ -15,9 +15,9 @@ export class ColumnComponent {
   column: Column;
 
   @Output()
-  addingColumnCancel = new EventEmitter();
-  @Output()
   editColumn = new EventEmitter<Column>();
+  @Output()
+  removeColumn = new EventEmitter<Column>();
 
   locale = locale;
   iconNames = ICON_NAMES;
@@ -27,17 +27,18 @@ export class ColumnComponent {
   ) {
   }
 
-  addNewItem() {
+  /**
+   * Добавление карточки
+   */
+  addNewItem(): void {
     const item = new Item();
     this.column.items.push(item);
     this.columnsService.editColumn(this.column);
   }
 
-  addingItemCancel(): void {
-    this.column.items.pop();
-    this.columnsService.editColumn(this.column);
-  }
-
+  /**
+   * Редактирование карточки
+   */
   editColumnItem(item: Item): void {
     const itemForEdit = this.column.items.find(i => {
       return i.id === item.id;
@@ -45,6 +46,19 @@ export class ColumnComponent {
     const itemForEditIndex = this.column.items.indexOf(itemForEdit);
 
     this.column.items[itemForEditIndex] = item;
+    this.editColumn.emit(this.column);
+  }
+
+  /**
+   * Удаление карточки
+   */
+  removeItem(item: Item): void {
+    const itemForRemove = this.column.items.find(i => {
+      return i.id === item.id;
+    });
+    const itemForRemoveIndex = this.column.items.indexOf(itemForRemove);
+
+    this.column.items.splice(itemForRemoveIndex, 1);
     this.editColumn.emit(this.column);
   }
 }
