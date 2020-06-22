@@ -6,6 +6,7 @@ import { Column } from 'src/app/_models/columns.models';
 })
 export class ColumnsService {
   columns: Array<Column> = [];
+  templates: Array<Array<Column>> = [];
 
   /**
    * Получение всех колонок
@@ -49,11 +50,52 @@ export class ColumnsService {
     const columnForRemoveIndex = this.columns.indexOf(columnForRemove);
 
     this.columns.splice(columnForRemoveIndex, 1);
+    console.log(this.columns);
 
     localStorage.setItem('columns', JSON.stringify(this.columns));
   }
 
-  removeAll() {
+  /**
+   * Удаление всех колонок
+   */
+  removeAllColumns(): void {
+    this.columns = [];
+
+    localStorage.setItem('columns', JSON.stringify(this.columns));
+  }
+
+  /**
+   * Очистить все
+   */
+  clearAll() {
     localStorage.clear();
+  }
+
+  /**
+   * Получение всех шаблонов
+   */
+  getTemplates(): Array<Array<Column>> {
+    this.templates = JSON.parse(localStorage.getItem('templates')) || [];
+
+    return this.templates;
+  }
+
+  /**
+   * Сохранение шаблона
+   */
+  saveTemplate(columns: Array<Column>): void {
+    this.templates.push(columns);
+
+    localStorage.setItem('templates', JSON.stringify(this.templates));
+  }
+
+  /**
+   * Создание доски по шаблону
+   */
+  generateFromTemplate(templateId: number): void {
+    this.templates = JSON.parse(localStorage.getItem('templates'));
+    this.columns = this.templates[templateId];
+
+    localStorage.setItem('columns', JSON.stringify(this.columns));
   }
 }

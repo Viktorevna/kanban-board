@@ -3,16 +3,22 @@
 
 :host {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.app__columns {
+  display: flex;
   align-items: flex-start;
 }
 
-.app__add-column-button {
-  width: 300px;
+.app__button {
   max-width: 300px;
   min-width: 300px;
   background-color: $colorBackgroundPrimary;
   box-shadow: $boxShadow;
-  margin: 10px;
+  margin: 5px 10px;
   display: flex;
   align-items: center;
   padding: 12px;
@@ -21,6 +27,12 @@
   @include textSecondary();
 }
 
-.app__add-column-icon {
+.app__button-icon {
   margin-right: 8px;
+}
+
+.app__buttons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
 }

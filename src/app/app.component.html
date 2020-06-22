@@ -1,22 +1,59 @@
-<column
-  *ngFor="let column of columns"
-  [column]="column"
-  [isColumnNew]="column.isColumnNew"
-  (editColumn)="editColumn($event)"
-  (removeColumn)="removeColumn($event)"
->
-</column>
+<div class="app__columns">
+  <column
+    *ngFor="let column of columns"
+    [column]="column"
+    [isColumnNew]="column.isColumnNew"
+    (editColumn)="editColumn($event)"
+    (removeColumn)="removeColumn($event)"
+  >
+  </column>
+</div>
 
-<button
-  class="app__add-column-button"
-  (click)="addNewColumn()"
->
-  <mat-icon class="app__add-column-icon">{{iconNames.ADD}}</mat-icon>
-  {{locale.AddColumn}}
-</button>
+<div class="app__buttons">
+  <button
+    class="app__button"
+    (click)="addNewColumn()"
+  >
+    <mat-icon class="app__button-icon">{{iconNames.ADD}}</mat-icon>
+    {{locale.AddColumn}}
+  </button>
 
-<button
-  (click)="removeAll()"
->
-  <mat-icon class="app__add-column-icon">{{iconNames.CLEAR}}</mat-icon>
-</button>
+  <button
+    *ngIf="columns.length"
+    class="app__button"
+    (click)="removeAllColumns()"
+  >
+    <mat-icon class="app__button-icon">{{iconNames.DELETE}}</mat-icon>
+    {{locale.RemoveAllColumns}}
+  </button>
+
+  <button
+    *ngIf="columns.length"
+    class="app__button"
+    (click)="saveTemplate()"
+  >
+    <mat-icon class="app__button-icon">{{iconNames.SAVE_TEMPLATE}}</mat-icon>
+    {{locale.CreateTemplate}}
+  </button>
+
+  <ng-container *ngIf="templates.length">
+    <button
+      *ngFor="let template of templates, let index = index"
+      class="app__button"
+      (click)="generateBoardFromTemplate(index)"
+    >
+      <mat-icon class="app__button-icon">{{iconNames.CREATE_BOARD}}</mat-icon>
+      {{locale.GenerateBoardFromTemplate}}{{index + 1}}
+    </button>
+  </ng-container>
+
+  <button
+    *ngIf="this.templates.length"
+    class="app__button"
+    (click)="clearAll()"
+  >
+    <mat-icon class="app__button-icon">{{iconNames.CLEAR}}</mat-icon>
+    {{locale.ClearAll}}
+  </button>
+</div>
+

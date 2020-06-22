@@ -31,13 +31,16 @@
   @include textDescriptionPrimaryDark();
 }
 
-.item__input {
+.item__inputs {
+  box-shadow: $boxShadow;
+  border-radius: $borderRadius;
   background-color: $colorBackgroundSecondary;
+}
+
+.item__input {
   width: 100%;
   padding: 8px 12px;
   box-sizing: border-box;
-  box-shadow: $boxShadow;
-  border-radius: $borderRadius;
   @include textPrimaryDark();
 
   &::placeholder {
@@ -45,8 +48,15 @@
   }
 }
 
+.item__title-input {
+  border-top-right-radius: $borderRadius;
+  border-top-left-radius: $borderRadius;
+}
+
 .item__description-input {
-  margin-top: 2px;
+  border-top: 1px solid $colorBackgroundPrimary;
+  border-bottom-right-radius: $borderRadius;
+  border-bottom-left-radius: $borderRadius;
   @include textDescriptionPrimaryDark();
 
   &::placeholder {

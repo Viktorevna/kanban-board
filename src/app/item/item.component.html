@@ -2,21 +2,23 @@
   *ngIf="isEditFormVisible"
   [formGroup]="formGroup"
 >
-  <input
-    class="item__input"
-    type="text"
-    placeholder="{{locale.InputItemTitle}}"
-    autofocus
-    formControlName="title"
-  >
+  <div class="item__inputs">
+    <input
+      class="item__input item__title-input"
+      type="text"
+      placeholder="{{locale.InputItemTitle}}"
+      autofocus
+      formControlName="title"
+    >
 
-  <textarea
-    class="item__input item__description-input"
-    placeholder="{{locale.InputItemDescription}}"
-    autofocus
-    formControlName="description"
-  >
-  </textarea>
+    <textarea
+      class="item__input item__description-input"
+      placeholder="{{locale.InputItemDescription}}"
+      autofocus
+      formControlName="description"
+    >
+    </textarea>
+  </div>
 
   <div class="item__actions">
     <button

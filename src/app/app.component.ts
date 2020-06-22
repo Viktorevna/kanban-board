@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   locale = locale;
   iconNames = ICON_NAMES;
   columns: Array<Column> = [];
+  templates: Array<Array<Column>>;
 
   constructor(
     @Inject(ColumnsService) private columnsService
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
    */
   ngOnInit() {
     this.columns = this.columnsService.getColumns();
+    this.templates = this.columnsService.getTemplates();
   }
 
   /**
@@ -46,10 +48,39 @@ export class AppComponent implements OnInit {
    */
   removeColumn(column: Column): void {
     this.columnsService.removeColumn(column);
+    this.columns = this.columnsService.getColumns();
   }
 
-  removeAll() {
-    this.columnsService.removeAll();
+  /**
+   * Удаление всех колонок
+   */
+  removeAllColumns() {
+    this.columnsService.removeAllColumns();
+    this.columns = this.columnsService.getColumns();
+  }
+
+  /**
+   * Очистить все
+   */
+  clearAll() {
+    this.columnsService.clearAll();
+    this.columns = this.columnsService.getColumns();
+    this.templates = this.columnsService.getTemplates();
+  }
+
+  /**
+   * Сохранить шаблон
+   */
+  saveTemplate() {
+    this.columnsService.saveTemplate(this.columns);
+    this.templates = this.columnsService.getTemplates();
+  }
+
+  /**
+   * Создать доску по шаблону
+   */
+  generateBoardFromTemplate(templateId: number) {
+    this.columnsService.generateFromTemplate(templateId);
     this.columns = this.columnsService.getColumns();
   }
 }

@@ -4,11 +4,13 @@
 export enum ICON_NAMES {
   ADD = 'add',
   CLEAR = 'clear',
-  DELETE = 'delete'
+  DELETE = 'delete',
+  CREATE_BOARD = 'flip_to_front',
+  SAVE_TEMPLATE = 'flip_to_back'
 }
 
 /**
- * Класс карточки
+ * Карточка
  */
 export class Item {
   constructor(
@@ -22,7 +24,7 @@ export class Item {
 }
 
 /**
- * Класс колонки
+ * Колонка
  */
 export class Column {
   constructor(
