@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { ICON_NAMES, Item } from 'src/app/_models/columns.models';
+import { ICON_NAMES, Item } from 'src/app/_models/app.models';
 import locale from './item.i18n';
 import { FormControl, FormGroup } from '@angular/forms';
 

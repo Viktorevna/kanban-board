@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
-import { Column, ICON_NAMES, Item } from 'src/app/_models/columns.models';
+import { Column, ICON_NAMES, Item } from 'src/app/_models/app.models';
 import locale from './column.i18n';
-import { ColumnsService } from 'src/app/_services/columns.service';
+import { AppService } from 'src/app/_services/app.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -24,7 +24,7 @@ export class ColumnComponent {
   iconNames = ICON_NAMES;
 
   constructor(
-    @Inject(ColumnsService) private columnsService
+    @Inject(AppService) private appService
   ) {
   }
 
@@ -34,7 +34,7 @@ export class ColumnComponent {
   addItem(): void {
     const item = new Item();
     this.column.items.push(item);
-    this.columnsService.editColumn(this.column);
+    this.appService.editColumn(this.column);
   }
 
   /**

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ColumnsService } from 'src/app/_services/columns.service';
+import { AppService } from 'src/app/_services/app.service';
 
 describe('AppComponent', function() {
   beforeEach(() => {
@@ -11,7 +11,7 @@ describe('AppComponent', function() {
       ],
       providers: [
         {
-          provide: ColumnsService,
+          provide: AppService,
           useValue: {
             getColumns: jasmine.createSpy().and.callFake(() => this.columns),
             getTemplates: jasmine.createSpy().and.callFake(() => this.templates),
@@ -41,20 +41,20 @@ describe('AppComponent', function() {
     this.component = this.fixture.componentInstance;
     this.fixture.detectChanges();
 
-    this.columnService = TestBed.get(ColumnsService);
+    this.appService = TestBed.get(AppService);
   });
 
   it('должен обновлять список колонок и шаблонов при иннициализации компонента', () => {
-    expect(this.columnService.getColumns).toHaveBeenCalled();
+    expect(this.appService.getColumns).toHaveBeenCalled();
     expect(this.component.columns).toEqual(this.columns);
-    expect(this.columnService.getTemplates).toHaveBeenCalled();
+    expect(this.appService.getTemplates).toHaveBeenCalled();
     expect(this.component.templates).toEqual(this.templates);
   });
 
   it('должен вызывать функцию добавления колонки', () => {
     this.component.addNewColumn();
 
-    expect(this.columnService.addColumn).toHaveBeenCalled();
+    expect(this.appService.addColumn).toHaveBeenCalled();
   });
 
   it('должен вызывать функцию редактирования колонки и обновлять список колонок', () => {
@@ -64,8 +64,8 @@ describe('AppComponent', function() {
 
     this.component.editColumn(column);
 
-    expect(this.columnService.editColumn).toHaveBeenCalledWith(column);
-    expect(this.columnService.getColumns).toHaveBeenCalled();
+    expect(this.appService.editColumn).toHaveBeenCalledWith(column);
+    expect(this.appService.getColumns).toHaveBeenCalled();
     expect(this.component.columns).toEqual(this.columns);
   });
 
@@ -76,34 +76,34 @@ describe('AppComponent', function() {
 
     this.component.removeColumn(column);
 
-    expect(this.columnService.removeColumn).toHaveBeenCalledWith(column);
-    expect(this.columnService.getColumns).toHaveBeenCalled();
+    expect(this.appService.removeColumn).toHaveBeenCalledWith(column);
+    expect(this.appService.getColumns).toHaveBeenCalled();
     expect(this.component.columns).toEqual(this.columns);
   });
 
   it('должен вызывать функцию удаления всех колонок и обновлять список колонок', () => {
     this.component.removeAllColumns();
 
-    expect(this.columnService.removeAllColumns).toHaveBeenCalled();
-    expect(this.columnService.getColumns).toHaveBeenCalled();
+    expect(this.appService.removeAllColumns).toHaveBeenCalled();
+    expect(this.appService.getColumns).toHaveBeenCalled();
     expect(this.component.columns).toEqual(this.columns);
   });
 
   it('должен вызывать функцию очистки localStorage, обновлять список колонок и обновлять список шаблонов', () => {
     this.component.clearAll();
 
-    expect(this.columnService.clearAll).toHaveBeenCalled();
-    expect(this.columnService.getColumns).toHaveBeenCalled();
+    expect(this.appService.clearAll).toHaveBeenCalled();
+    expect(this.appService.getColumns).toHaveBeenCalled();
     expect(this.component.columns).toEqual(this.columns);
-    expect(this.columnService.getTemplates).toHaveBeenCalled();
+    expect(this.appService.getTemplates).toHaveBeenCalled();
     expect(this.component.templates).toEqual(this.templates);
   });
 
   it('должен вызывать функцию сохранения шаблона и обновлять список шаблонов', () => {
     this.component.saveTemplate();
 
-    expect(this.columnService.saveTemplate).toHaveBeenCalled();
-    expect(this.columnService.getTemplates).toHaveBeenCalled();
+    expect(this.appService.saveTemplate).toHaveBeenCalled();
+    expect(this.appService.getTemplates).toHaveBeenCalled();
     expect(this.component.templates).toEqual(this.templates);
   });
 
@@ -112,8 +112,8 @@ describe('AppComponent', function() {
 
     this.component.generateBoardFromTemplate(templateId);
 
-    expect(this.columnService.generateFromTemplate).toHaveBeenCalledWith(templateId);
-    expect(this.columnService.getColumns).toHaveBeenCalled();
+    expect(this.appService.generateFromTemplate).toHaveBeenCalledWith(templateId);
+    expect(this.appService.getColumns).toHaveBeenCalled();
     expect(this.component.columns).toEqual(this.columns);
   });
 });

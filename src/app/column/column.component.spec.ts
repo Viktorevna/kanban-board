@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ColumnComponent } from './column.component';
-import { ColumnsService } from '../_services/columns.service';
+import { AppService } from '../_services/app.service';
 import { NO_ERRORS_SCHEMA, Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
@@ -28,7 +28,7 @@ describe('ColumnComponent', function() {
       ],
       providers: [
         {
-          provide: ColumnsService,
+          provide: AppService,
           useValue: {
             editColumn: jasmine.createSpy().and.callThrough()
           }
@@ -43,14 +43,14 @@ describe('ColumnComponent', function() {
     this.component = this.de.query(By.css('column')).componentInstance;
     this.fixture.detectChanges();
 
-    this.columnService = TestBed.get(ColumnsService);
+    this.appService = TestBed.get(AppService);
   });
 
   it('должен добавлять карточку в колонку и вызывать функцию редактирования карточки', () => {
     this.component.addItem();
 
     expect(this.component.column.items.length).toBe(1);
-    expect(this.columnService.editColumn).toHaveBeenCalledWith(this.component.column);
+    expect(this.appService.editColumn).toHaveBeenCalledWith(this.component.column);
   });
 
   it('должен заменять отредактированную карточку в массиве карточек и эмитить событие редактирования колонки', () => {

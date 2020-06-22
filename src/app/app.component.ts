@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import locale from './app.i18n';
-import { Column, ICON_NAMES } from 'src/app/_models/columns.models';
-import { ColumnsService } from 'src/app/_services/columns.service';
+import { Column, ICON_NAMES } from 'src/app/_models/app.models';
+import { AppService } from 'src/app/_services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   templates: Array<Array<Column>>;
 
   constructor(
-    @Inject(ColumnsService) private columnsService
+    @Inject(AppService) private appService
   ) {
   }
 
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
    * Инициализация компонента
    */
   ngOnInit() {
-    this.columns = this.columnsService.getColumns();
-    this.templates = this.columnsService.getTemplates();
+    this.columns = this.appService.getColumns();
+    this.templates = this.appService.getTemplates();
   }
 
   /**
@@ -32,55 +32,55 @@ export class AppComponent implements OnInit {
    */
   addNewColumn() {
     const column = new Column();
-    this.columnsService.addColumn(column);
+    this.appService.addColumn(column);
   }
 
   /**
    * Редактирование колонки
    */
   editColumn(column: Column): void {
-    this.columnsService.editColumn(column);
-    this.columns = this.columnsService.getColumns();
+    this.appService.editColumn(column);
+    this.columns = this.appService.getColumns();
   }
 
   /**
    * Удаление колонки
    */
   removeColumn(column: Column): void {
-    this.columnsService.removeColumn(column);
-    this.columns = this.columnsService.getColumns();
+    this.appService.removeColumn(column);
+    this.columns = this.appService.getColumns();
   }
 
   /**
    * Удаление всех колонок
    */
   removeAllColumns() {
-    this.columnsService.removeAllColumns();
-    this.columns = this.columnsService.getColumns();
+    this.appService.removeAllColumns();
+    this.columns = this.appService.getColumns();
   }
 
   /**
    * Очистить все
    */
   clearAll() {
-    this.columnsService.clearAll();
-    this.columns = this.columnsService.getColumns();
-    this.templates = this.columnsService.getTemplates();
+    this.appService.clearAll();
+    this.columns = this.appService.getColumns();
+    this.templates = this.appService.getTemplates();
   }
 
   /**
    * Сохранить шаблон
    */
   saveTemplate() {
-    this.columnsService.saveTemplate(this.columns);
-    this.templates = this.columnsService.getTemplates();
+    this.appService.saveTemplate(this.columns);
+    this.templates = this.appService.getTemplates();
   }
 
   /**
    * Создать доску по шаблону
    */
   generateBoardFromTemplate(templateId: number) {
-    this.columnsService.generateFromTemplate(templateId);
-    this.columns = this.columnsService.getColumns();
+    this.appService.generateFromTemplate(templateId);
+    this.columns = this.appService.getColumns();
   }
 }

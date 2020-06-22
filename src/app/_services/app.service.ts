@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Column } from 'src/app/_models/columns.models';
+import { Column } from 'src/app/_models/app.models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ColumnsService {
+export class AppService {
   columns: Array<Column> = [];
   templates: Array<Array<Column>> = [];
 
