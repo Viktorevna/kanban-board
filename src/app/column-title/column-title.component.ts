@@ -67,7 +67,7 @@ export class ColumnTitleComponent implements OnInit {
    * Редактирование заголовка колонки
    */
   editTitle(): void {
-    this.column.title = this.formGroup.get('title').value ?? locale.WithoutTitle;
+    this.column.title = this.formGroup.get('title').value ? this.formGroup.get('title').value : locale.WithoutTitle;
     this.column.isColumnNew = false;
     this.editColumnTitle.emit(this.column);
   }

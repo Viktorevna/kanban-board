@@ -2,6 +2,7 @@ import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { Column, ICON_NAMES, Item } from 'src/app/_models/columns.models';
 import locale from './column.i18n';
 import { ColumnsService } from 'src/app/_services/columns.service';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'column',
@@ -59,6 +60,14 @@ export class ColumnComponent {
     const itemForRemoveIndex = this.column.items.indexOf(itemForRemove);
 
     this.column.items.splice(itemForRemoveIndex, 1);
+    this.editColumn.emit(this.column);
+  }
+
+  /**
+   * Обработчик перемещения карточки внутри колонки
+   */
+  dropItem(items: CdkDragDrop<Array<Item>>) {
+    moveItemInArray(this.column.items, items.previousIndex, items.currentIndex);
     this.editColumn.emit(this.column);
   }
 }

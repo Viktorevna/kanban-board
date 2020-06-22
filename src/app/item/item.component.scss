@@ -6,10 +6,6 @@
   @include textPrimaryDark();
 }
 
-:host(:first-of-type) {
-  margin-top: 12px;
-}
-
 :host:not(:last-of-type) {
   margin-bottom: 8px;
 }

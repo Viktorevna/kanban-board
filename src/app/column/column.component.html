@@ -5,13 +5,21 @@
 >
 </column-title>
 
-<item
-  *ngFor="let item of column.items"
-  [item]="item"
-  (editColumnItem)="editColumnItem($event)"
-  (removeItem)="removeItem($event)"
+<div
+  *ngIf="column.items?.length"
+  cdkDropList
+  (cdkDropListDropped)="dropItem($event)"
+  class="column__items"
 >
-</item>
+  <item
+    *ngFor="let item of column.items"
+    cdkDrag
+    [item]="item"
+    (editColumnItem)="editColumnItem($event)"
+    (removeItem)="removeItem($event)"
+  >
+  </item>
+</div>
 
 <button
   class="column__add-item-button"

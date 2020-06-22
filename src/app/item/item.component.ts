@@ -68,7 +68,7 @@ export class ItemComponent implements OnInit {
    * Редактирование карточки
    */
   editItem(): void {
-    this.item.title = this.formGroup.get('title').value ?? locale.WithoutTitle;
+    this.item.title = this.formGroup.get('title').value ? this.formGroup.get('title').value : locale.WithoutTitle;
     this.item.description = this.formGroup.get('description').value;
     this.item.isItemNew = false;
     this.editColumnItem.emit(this.item);

@@ -7,6 +7,7 @@ import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { ColumnTitleComponent } from './column-title/column-title.component';
 import { ItemComponent } from './item/item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [
