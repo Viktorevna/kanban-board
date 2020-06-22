@@ -19,7 +19,7 @@
   </button>
 
   <button
-    *ngIf="columns.length"
+    *ngIf="columns?.length"
     class="app__button"
     (click)="removeAllColumns()"
   >
@@ -28,7 +28,7 @@
   </button>
 
   <button
-    *ngIf="columns.length"
+    *ngIf="columns?.length"
     class="app__button"
     (click)="saveTemplate()"
   >
@@ -36,7 +36,7 @@
     {{locale.CreateTemplate}}
   </button>
 
-  <ng-container *ngIf="templates.length">
+  <ng-container *ngIf="templates?.length">
     <button
       *ngFor="let template of templates, let index = index"
       class="app__button"
@@ -48,7 +48,7 @@
   </ng-container>
 
   <button
-    *ngIf="this.templates.length"
+    *ngIf="this.templates?.length"
     class="app__button"
     (click)="clearAll()"
   >

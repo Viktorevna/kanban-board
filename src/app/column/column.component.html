@@ -15,7 +15,7 @@
     *ngFor="let item of column.items"
     cdkDrag
     [item]="item"
-    (editColumnItem)="editColumnItem($event)"
+    (editItem)="editItem($event)"
     (removeItem)="removeItem($event)"
   >
   </item>
@@ -23,7 +23,7 @@
 
 <button
   class="column__add-item-button"
-  (click)="addNewItem()"
+  (click)="addItem()"
 >
   <mat-icon class="column__add-item-icon">{{iconNames.ADD}}</mat-icon>
   {{locale.AddItem}}

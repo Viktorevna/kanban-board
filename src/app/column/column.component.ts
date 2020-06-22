@@ -31,7 +31,7 @@ export class ColumnComponent {
   /**
    * Добавление карточки
    */
-  addNewItem(): void {
+  addItem(): void {
     const item = new Item();
     this.column.items.push(item);
     this.columnsService.editColumn(this.column);
@@ -40,7 +40,7 @@ export class ColumnComponent {
   /**
    * Редактирование карточки
    */
-  editColumnItem(item: Item): void {
+  editItem(item: Item): void {
     const itemForEdit = this.column.items.find(i => {
       return i.id === item.id;
     });

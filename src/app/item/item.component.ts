@@ -13,7 +13,7 @@ export class ItemComponent implements OnInit {
   item: Item;
 
   @Output()
-  editColumnItem = new EventEmitter<Item>();
+  editItem = new EventEmitter<Item>();
   @Output()
   removeItem = new EventEmitter<Item>();
 
@@ -47,13 +47,6 @@ export class ItemComponent implements OnInit {
   }
 
   /**
-   * Обработчик клика на карточку
-   */
-  onItemClick(): void {
-    this.isEditable = true;
-  }
-
-  /**
    * Отмена редактирования карточки
    */
   inputItemCancel(): void {
@@ -65,12 +58,19 @@ export class ItemComponent implements OnInit {
   }
 
   /**
+   * Обработчик клика на карточку
+   */
+  onItemClick(): void {
+    this.isEditable = true;
+  }
+
+  /**
    * Редактирование карточки
    */
-  editItem(): void {
+  editColumnItem(): void {
     this.item.title = this.formGroup.get('title').value ? this.formGroup.get('title').value : locale.WithoutTitle;
     this.item.description = this.formGroup.get('description').value;
     this.item.isItemNew = false;
-    this.editColumnItem.emit(this.item);
+    this.editItem.emit(this.item);
   }
 }
