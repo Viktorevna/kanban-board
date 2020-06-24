@@ -8,6 +8,7 @@
 <div
   *ngIf="column.items?.length"
   cdkDropList
+  [cdkDropListData]="column.items"
   (cdkDropListDropped)="dropItem($event)"
   class="column__items"
 >
